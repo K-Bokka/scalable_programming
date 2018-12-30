@@ -4,6 +4,8 @@ class Rational(n: Int, d: Int) {
   val numer: Int = n
   val denom: Int = d
 
+  def this(n: Int) = this(n, 1)
+
   override def toString: String = numer + "/" + denom
 
   def add(that: Rational): Rational =
