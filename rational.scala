@@ -15,8 +15,14 @@ class Rational(n: Int, d: Int) {
       denom * that.denom
     )
 
+  def +(i: Int): Rational =
+    new Rational(numer + i * denom, denom)
+
   def *(that: Rational): Rational =
     new Rational(numer * that.numer, denom * that.denom)
+
+  def *(i: Int): Rational =
+    new Rational(numer * i, denom)
 
   private def gcd(a: Int, b: Int): Int =
     if (b == 0) a else gcd(b, a % b)
