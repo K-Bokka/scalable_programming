@@ -6,6 +6,4 @@ abstract class Element {
   val width: Int = if (height == 0) 0 else contents(0).length
 }
 
-class ArrayElement(conts: Array[String]) extends Element {
-  lazy val contents: Array[String] = conts
-}
+class ArrayElement(val contents: Array[String]) extends Element
