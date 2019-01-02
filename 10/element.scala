@@ -4,6 +4,16 @@ abstract class Element {
   val height: Int = contents.length
 
   val width: Int = if (height == 0) 0 else contents(0).length
+
+  def above(that: Element): Element = new ArrayElement(this.contents ++ that.contents)
+
+  def beside(that: Element): Element = new ArrayElement(
+    for (
+      (line1, line2) <- this.contents zip that.contents
+    ) yield line1 + line2
+  )
+
+  override def toString: String = contents.mkString("\n")
 }
 
 class ArrayElement(val contents: Array[String]) extends Element
