@@ -19,6 +19,25 @@ abstract class Element {
 }
 
 object Element {
+
+  private class ArrayElement(val contents: Array[String]) extends Element
+
+  private class LineElement(s: String) extends Element {
+    lazy val contents = Array(s)
+    override val width = s.length
+    override val height = 1
+  }
+
+  private class UniformElement(
+                                ch: Char,
+                                override val width: Int,
+                                override val height: Int
+                              ) extends Element {
+    private lazy val line = ch.toString * width
+
+    def contents = Array.fill(height)(line)
+  }
+
   def elem(contents: Array[String]): Element = new ArrayElement(contents)
 
   def elem(ch: Char, width: Int, height: Int): Element = new UniformElement(ch, width, height)
@@ -26,20 +45,3 @@ object Element {
   def elem(line: String): Element = new LineElement(line)
 }
 
-class ArrayElement(val contents: Array[String]) extends Element
-
-class LineElement(s: String) extends Element {
-  lazy val contents = Array(s)
-  override val width = s.length
-  override val height = 1
-}
-
-class UniformElement(
-                      ch: Char,
-                      override val width: Int,
-                      override val height: Int
-                    ) extends Element {
-  private lazy val line = ch.toString * width
-
-  def contents = Array.fill(height)(line)
-}
