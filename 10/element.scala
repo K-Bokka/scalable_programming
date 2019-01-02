@@ -7,5 +7,5 @@ abstract class Element {
 }
 
 class ArrayElement(conts: Array[String]) extends Element {
-  def contents: Array[String] = conts
+  lazy val contents: Array[String] = conts
 }
