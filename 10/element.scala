@@ -16,6 +16,24 @@ abstract class Element {
   )
 
   override def toString: String = contents.mkString("\n")
+
+  def widen(w: Int): Element = {
+    if (w <= width) this
+    else {
+      val left = elem(' ', (w - width) / 2, height)
+      val right = elem(' ', w - width - left.width / 2, height)
+      left beside this beside right
+    }
+  }
+
+  def heighten(h: Int): Element = {
+    if (h <= height) this
+    else {
+      val top = elem(' ', width, (h - height) / 2)
+      val bot = elem(' ', width, h - height - top.height)
+      top above this above bot
+    }
+  }
 }
 
 object Element {
