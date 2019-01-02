@@ -40,4 +40,11 @@ scala> new Rational(1, 2)
            ^
 
 scala> :quit
+$ scalac rational.scala
+$ scala
+Welcome to Scala 2.12.5 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_152).
+Type in expressions for evaluation. Or try :help.
+
+scala> new Rational(1, 2)
+res0: Rational = 1/2
 ```
