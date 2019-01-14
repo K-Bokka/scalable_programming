@@ -1,4 +1,4 @@
-package org.stairwabook.simulation
+package org.stairwaybook.simulation
 
 abstract class BasicCircuitSimulation extends Simulation {
 
